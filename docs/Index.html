@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Live Cricket Score</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Live Cricket Score</h1>
+  <table id="scoreTable">
+    <tr>
+      <th>Team</th>
+      <th>Score</th>
+      <th>Overs</th>
+    </tr>
+    <tr>
+      <td id="team1">Team A</td>
+      <td id="score1">120/3</td>
+      <td id="overs1">15.2</td>
+    </tr>
+    <tr>
+      <td id="team2">Team B</td>
+      <td id="score2">80/2</td>
+      <td id="overs2">10.0</td>
+    </tr>
+  </table>
+  <p id="status">Team A is batting</p>
+  <button onclick="updateScore()">Refresh Score</button>
+  <script src="script.js"></script>
+</body>
+</html>
