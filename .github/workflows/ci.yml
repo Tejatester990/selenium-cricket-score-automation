@@ -33,6 +33,10 @@ jobs:
 
     - name: Run Selenium Tests
       run: mvn test
+    
+    - name: Run Selenium Tests
+      run: mvn test -Dsurefire.suiteXmlFiles=
+
 
     - name: Upload Extent Report
       if: always()
