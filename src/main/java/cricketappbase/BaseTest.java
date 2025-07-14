@@ -23,7 +23,10 @@ public class BaseTest {
     options.addArguments("--disable-dev-shm-usage");
     options.addArguments("--window-size=1920,1080");
     driver=new ChromeDriver(options);
-driver=new ChromeDriver();
+        if (!System.getenv().containsKey("CI")) { // In GitHub Actions, "CI" env variable is always set to "true"
+            options.addArguments("user-data-dir=/path/to/profile");
+        }
+//driver=new ChromeDriver();
     extentReports= ExtentManager.getInstance();
 
 }
