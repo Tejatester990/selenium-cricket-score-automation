@@ -19,7 +19,7 @@ public class CricketScoreTest extends BaseTest{
     @BeforeClass
     public void setUp() {
         setUpDriver();
-        String pathurl="C://Users//Public//Downloads//Cricket-app-score//Index.html";
+        String pathurl="C:\\Users\\Public\\Downloads\\CricketScoreAutomationSelenium\\Cricketappscoreapplication\\Index.html";
         driver.get(pathurl); // Replace with your actual file path or deployed URL
         cricketScorePage = new CricketScorePage(driver);
     }
