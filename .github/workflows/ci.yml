@@ -28,37 +28,34 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    # ✅ Setup Node.js for npm server
+    # ✅ Setup Node.js to run frontend server
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
 
-    # ✅ Install npm dependencies
-    - name: Install npm dependencies
+    - name: Install frontend dependencies
+      working-directory: frontend
       run: npm install
 
-    # ✅ Start npm server on port 3000
-    - name: Start npm server
+    - name: Start frontend server
+      working-directory: frontend
       run: npm start &
     
-    # ✅ Wait for server to be ready
-    - name: Wait for server
+    - name: Wait for frontend server to be ready
       run: |
         for i in {1..15}; do
           if curl -sSf http://localhost:3000/index.html; then
-            echo "Server is up!"
+            echo "Frontend server is up!"
             break
           fi
-          echo "Waiting for server on port 3000..."
+          echo "Waiting for frontend server on :3000..."
           sleep 3
         done
 
-    # ✅ Run Maven tests
     - name: Build and run tests
       run: mvn clean test
 
-    # ✅ Upload Extent Report
     - name: Upload Extent Report
       if: always()
       uses: actions/upload-artifact@v4
@@ -66,8 +63,7 @@ jobs:
         name: ExtentReport
         path: '**/ExtentReport.html'
 
-    # ✅ Upload CSV Log
-    - name: Upload Cricket Score CSV Log
+    - name: Upload CSV Log
       if: always()
       uses: actions/upload-artifact@v4
       with:
